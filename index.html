@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaloliddin | Digital Alchemist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;900&family=Inter:wght@400;700&display=swap');
+
+        :root {
+            --bg: #080808;
+            --accent: #ff0055;
+            --blue: #0077ff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .unbounded { font-family: 'Unbounded', sans-serif; }
+
+        /* Suzuvchi Ikonkalar (Bubbles) */
+        .bubble {
+            position: fixed;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 5;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .bubble:hover { transform: scale(1.2); border-color: var(--accent); }
+
+        /* Gorizontal Loyihalar */
+        .projects-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 50px 20px;
+            gap: 30px;
+            scrollbar-width: none;
+        }
+
+        .projects-wrapper::-webkit-scrollbar { display: none; }
+
+        .project-card {
+            min-width: 350px;
+            height: 500px;
+            scroll-snap-align: center;
+            background: linear-gradient(145deg, #111, #050505);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255, 0, 85, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 15vw, 12rem);
+            line-height: 0.8;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+        }
+
+        .marquee-text {
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bubble-container">
+        <div class="bubble w-20 h-20 text-orange-500" data-x="10" data-y="20"><i class="fab fa-html5 text-3xl"></i></div>
+        <div class="bubble w-24 h-24 text-blue-500" data-x="80" data-y="10"><i class="fab fa-css3-alt text-4xl"></i></div>
+        <div class="bubble w-28 h-28 text-yellow-400" data-x="20" data-y="70"><i class="fab fa-js text-5xl"></i></div>
+        <div class="bubble w-32 h-32 text-cyan-400" data-x="70" data-y="60"><i class="fab fa-react text-6xl animate-spin-slow"></i></div>
+    </div>
+
+    <section class="min-h-screen flex flex-col justify-center px-8 relative z-10">
+        <div class="text-[10px] uppercase tracking-[0.8em] text-accent mb-8 font-bold">Creative Web Engineer</div>
+        <h1 class="unbounded hero-title mb-10">JALOLIDDIN<br>XOJMURODOV</h1>
+        <div class="flex flex-wrap gap-10 items-end">
+            <p class="max-w-md text-gray-500 text-lg">Men kod orqali interaktiv san'at yarataman. Har bir loyiha — bu yangi dunyo.</p>
+            <a href="https://t.me/Xojmurodov_Coder" class="bg-white text-black px-12 py-5 rounded-full font-black hover:bg-accent hover:text-white transition-all uppercase tracking-widest text-sm">Let's talk</a>
+        </div>
+    </section>
+
+    <div class="py-10 border-y border-white/5 overflow-hidden">
+        <div class="marquee-text unbounded text-4xl opacity-10 font-black uppercase">
+            React • JavaScript • Tailwind • CSS • HTML • UI/UX • React • JavaScript • Tailwind • CSS • HTML • UI/UX •
+        </div>
+    </div>
+
+    <section class="py-32">
+        <div class="px-8 mb-12 flex justify-between items-end">
+            <h2 class="unbounded text-5xl font-black italic">WORKS<span class="text-accent">.</span></h2>
+            <div class="text-xs opacity-40 uppercase tracking-widest">Scroll sideways →</div>
+        </div>
+        
+        <div class="projects-wrapper">
+            <div class="project-card group">
+                <span class="text-xs font-bold opacity-30">01 / INTERACTIVE</span>
+                <h3 class="unbounded text-3xl font-bold group-hover:text-accent transition">Interactive 3D</h3>
+                <a href="https://interactive3d.netlify.app/" target="_blank" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-card group">
+                <span class="text-xs font-bold opacity-30">02 / BRANDING</span>
+                <h3 class="unbounded text-3xl font-bold group-hover:text-accent transition">Airpods Landing</h3>
+                <a href="https://airpords.netlify.app/" target="_blank" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-card group">
+                <span class="text-xs font-bold opacity-30">03 / ECOSYSTEM</span>
+                <h3 class="unbounded text-3xl font-bold group-hover:text-accent transition">Al-Nasriy</h3>
+                <a href="https://al-nasriy.netlify.app/" target="_blank" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-card group">
+                <span class="text-xs font-bold opacity-30">04 / PLATFORM</span>
+                <h3 class="unbounded text-3xl font-bold group-hover:text-accent transition">Alnasriy Konkurs</h3>
+                <a href="https://alnasriykonkurs.netlify.app/" target="_blank" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-card group">
+                <span class="text-xs font-bold opacity-30">05 / DATA</span>
+                <h3 class="unbounded text-3xl font-bold group-hover:text-accent transition">2025/26 Year</h3>
+                <a href="https://2025and2026year.netlify.app/" target="_blank" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="project-card group">
+                <span class="text-xs font-bold opacity-30">06 / ARCHIVE</span>
+                <h3 class="unbounded text-3xl font-bold group-hover:text-accent transition">My Project</h3>
+                <a href="https://myproect.netlify.app/" target="_blank" class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-8 py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div class="unbounded text-2xl font-black">JX<span class="text-accent">.</span></div>
+        <div class="flex gap-10 text-xl font-bold uppercase tracking-widest text-gray-500">
+            <a href="https://t.me/Xojmurodov_Coder" class="hover:text-white transition">Telegram</a>
+            <a href="tel:+998951903181" class="hover:text-white transition">Call</a>
+        </div>
+        <div class="text-[10px] opacity-20 uppercase tracking-[0.5em]">2026 Jaloliddin Xojmurodov</div>
+    </footer>
+
+    <script>
+        const bubbles = document.querySelectorAll('.bubble');
+        let bubbleData = Array.from(bubbles).map(b => ({
+            el: b,
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            vx: (Math.random() - 0.5) * 2,
+            vy: (Math.random() - 0.5) * 2
+        }));
+
+        function updateBubbles() {
+            bubbleData.forEach(b => {
+                b.x += b.vx;
+                b.y += b.vy;
+
+                if (b.x < 0 || b.x > window.innerWidth - 100) b.vx *= -1;
+                if (b.y < 0 || b.y > window.innerHeight - 100) b.vy *= -1;
+
+                b.el.style.transform = `translate(${b.x}px, ${b.y}px)`;
+            });
+            requestAnimationFrame(updateBubbles);
+        }
+        updateBubbles();
+
+        // Parallax scroll effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelector('.hero-title').style.transform = `translateY(${scrolled * 0.3}px)`;
+        });
+    </script>
+</body>
+</html>
